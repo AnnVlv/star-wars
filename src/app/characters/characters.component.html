@@ -1,0 +1,8 @@
+<ng-container *ngIf="characters$ | async as characters">
+  <div *ngFor="let character of characters; let idx = index"
+       [routerLink]="['/', idx + 1]"
+       class="character"
+  >
+    {{character?.name}}
+  </div>
+</ng-container>

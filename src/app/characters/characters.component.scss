@@ -1,0 +1,11 @@
+.character {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+  margin-bottom: 16px;
+
+  &:hover {
+    color: gray;
+  }
+}
