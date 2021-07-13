@@ -1,0 +1,23 @@
+.details {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: fit-content;
+  margin: 0 auto;
+
+  .name {
+    padding: 12px;
+  }
+
+  .films {
+    margin-top: 24px;
+
+    .films-section-title {
+      margin-bottom: 24px;
+    }
+
+    .film {
+      margin-bottom: 16px;
+    }
+  }
+}

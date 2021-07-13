@@ -3,8 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Character } from '../../shared/interfaces';
-import { CharactersApi } from '../../shared/interfaces/characters-api';
+import { Character, Api } from '../../shared/interfaces';
 
 
 @Injectable({
@@ -18,7 +17,7 @@ export class CharacterApiService {
   ) { }
 
   getCharacters(): Observable<Character[]> {
-    return this.httpClient.get<CharactersApi>(this.URL).pipe(
+    return this.httpClient.get<Api<Character>>(this.URL).pipe(
       map(data => data.results),
     );
   }

@@ -9,7 +9,7 @@ import { Character } from '../shared/interfaces';
 @Component({
   selector: 'app-character-details',
   templateUrl: './character-details.component.html',
-  styleUrls: ['./character-details.component.scss']
+  styleUrls: ['./character-details.component.scss'],
 })
 export class CharacterDetailsComponent implements OnInit {
   character$: Observable<Character>;

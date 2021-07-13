@@ -11,7 +11,7 @@ import { CharacterDetailsRoutingModule } from './character-details-routing.modul
   ],
   imports: [
     CommonModule,
-    CharacterDetailsRoutingModule
+    CharacterDetailsRoutingModule,
   ],
   exports: [
     CharacterDetailsComponent,

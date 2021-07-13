@@ -1,5 +1,10 @@
-<div>
-  <pre>
-    {{ character$ | async | json }}
-  </pre>
+<div class="details" *ngIf="character$ | async as character">
+  <h2 class="name">{{character?.name}}</h2>
+
+  <div class="films">
+    <div class="films-section-title">Films:</div>
+    <div class="film" *ngFor="let film of character.films">
+      {{film?.title}}
+    </div>
+  </div>
 </div>

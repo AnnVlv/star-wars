@@ -1,39 +1,27 @@
-import {
-  GET_CHARACTER,
-  GET_CHARACTER_FAIL,
-  GET_CHARACTER_SUCCESS,
-  GET_CHARACTERS,
-  GET_CHARACTERS_FAIL,
-  GET_CHARACTERS_SUCCESS,
-} from './character.actions';
-import { Character } from '../../shared/interfaces';
+import { Film } from '../../shared/interfaces';
+import { GET_FILM, GET_FILM_FAIL, GET_FILM_SUCCESS } from './film.actions';
 import { getIdFromUrl } from '../../shared/utils';
 
 
-export interface CharacterStateModel {
-  entities: {[key: number]: Character};
+export interface FilmStateModel {
+  entities: {[key: number]: Film};
   ids: number[];
   loading: boolean;
 }
 
-const initialState: CharacterStateModel = {
+const initialState: FilmStateModel = {
   entities: {},
   ids: [],
   loading: false,
 };
 
-export function charactersReducer(state = initialState, {type, payload}): CharacterStateModel {
+export function filmsReducer(state = initialState, {type, payload}): FilmStateModel {
   switch (type) {
-    case GET_CHARACTERS:
+    case GET_FILM:
       return Object.assign({}, state, {
         loading: true,
       });
-    case GET_CHARACTER:
-      return Object.assign({}, state, {
-        loading: true,
-      });
-    case GET_CHARACTERS_SUCCESS:
-    case GET_CHARACTER_SUCCESS:
+    case GET_FILM_SUCCESS:
       const ids = [...new Set([
         ...state.ids,
         ...payload.map(({url}) => getIdFromUrl(url)),
@@ -51,8 +39,7 @@ export function charactersReducer(state = initialState, {type, payload}): Charac
           ...entities,
         },
       });
-    case GET_CHARACTERS_FAIL:
-    case GET_CHARACTER_FAIL:
+    case GET_FILM_FAIL:
       return Object.assign({}, state, {
         loading: false,
         ids: [],

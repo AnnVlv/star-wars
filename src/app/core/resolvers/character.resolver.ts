@@ -4,26 +4,25 @@ import { Observable } from 'rxjs';
 import { filter, switchMap, take } from 'rxjs/operators';
 
 import { CharacterService } from '../services/character.service';
-import { CharacterStateModel } from '../../state/character/character.reducer';
 
 
 @Injectable({
   providedIn: 'root',
 })
-export class CharacterResolver implements Resolve<Observable<CharacterStateModel>> {
+export class CharacterResolver implements Resolve<Observable<boolean>> {
   constructor(
     private characterService: CharacterService,
   ) { }
 
-  resolve(route: ActivatedRouteSnapshot): Observable<CharacterStateModel> {
+  resolve(route: ActivatedRouteSnapshot): Observable<boolean> {
     const id = Number(route.paramMap.get('id'));
     this.characterService.getCharacter(id);
 
-    return this.characterService.charactersState$.pipe(
-      filter(request => request.loading),
+    return this.characterService.loading$.pipe(
+      filter(loading => loading),
       take(1),
-      switchMap(() => this.characterService.charactersState$.pipe(
-        filter(request => !request.loading),
+      switchMap(() => this.characterService.loading$.pipe(
+        filter(loading => !loading),
         take(1),
       )),
     );
